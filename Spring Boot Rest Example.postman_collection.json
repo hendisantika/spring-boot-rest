@@ -1,0 +1,147 @@
+{
+  "info": {
+    "_postman_id": "669501b3-f77e-4649-8160-e247bf629aad",
+    "name": "Spring Boot Rest Example",
+    "description": "Spring Boot Rest Example",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Customers",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"firstname\": \"Uchiha\",\n    \"lastname\": \" Sasuke\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/customer",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "customer"
+          ]
+        },
+        "description": "Add New Customer"
+      },
+      "response": []
+    },
+    {
+      "name": "Add New Customer",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"firstname\": \"Hatake\",\n    \"lastname\": \" Kakashi\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/customer",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "customer"
+          ]
+        },
+        "description": "Add New Customer"
+      },
+      "response": []
+    },
+    {
+      "name": "Retrieve a single customer",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/customer/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "customer",
+            "1"
+          ]
+        },
+        "description": "Retrieve a single customer"
+      },
+      "response": []
+    },
+    {
+      "name": "Update a customer",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"id\": 1,\n    \"firstname\": \"Uchiha\",\n    \"lastname\": \" Shishui\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/customer/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "customer",
+            "1"
+          ]
+        },
+        "description": "Update a customer"
+      },
+      "response": []
+    },
+    {
+      "name": "Patch a customer",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        },
+        "description": "Patch a customer"
+      },
+      "response": []
+    },
+    {
+      "name": "Delete a customer",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        },
+        "description": "Delete a customer"
+      },
+      "response": []
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
