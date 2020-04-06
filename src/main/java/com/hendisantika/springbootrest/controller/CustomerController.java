@@ -6,7 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
@@ -36,10 +43,10 @@ public class CustomerController {
     public ResponseEntity<List<Customer>> listAllCustomers() {
         final List<Customer> allCustomers = customerService.findAllCustomers();
         if (allCustomers.isEmpty()) {
-            return new ResponseEntity<List<Customer>>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        return new ResponseEntity<List<Customer>>(allCustomers, HttpStatus.OK);
+        return new ResponseEntity<>(allCustomers, HttpStatus.OK);
     }
 
     /**
@@ -52,10 +59,10 @@ public class CustomerController {
     public ResponseEntity<Customer> getCustomer(@PathVariable("id") final Long id) {
         final Customer fetchedCustomer = customerService.findById(id);
         if (fetchedCustomer == null) {
-            return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<Customer>(fetchedCustomer, HttpStatus.OK);
+        return new ResponseEntity<>(fetchedCustomer, HttpStatus.OK);
     }
 
     /**
@@ -70,13 +77,13 @@ public class CustomerController {
                                                final UriComponentsBuilder ucBuilder) {
 
         if (customerService.isCustomerExist(customer)) {
-            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         final Customer savedCustomer = customerService.saveCustomer(customer);
 
         final HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/customer/{id}").buildAndExpand(savedCustomer.getId()).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+        return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
     /**
@@ -92,10 +99,10 @@ public class CustomerController {
         final Customer updatedCustomer = customerService.updateCustomer(id, customer);
 
         if (updatedCustomer == null) {
-            return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<Customer>(updatedCustomer, HttpStatus.OK);
+        return new ResponseEntity<>(updatedCustomer, HttpStatus.OK);
     }
 
     /**
@@ -111,10 +118,10 @@ public class CustomerController {
         final Customer patchedCustomer = customerService.patchCustomer(id, customer);
 
         if (patchedCustomer == null) {
-            return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<Customer>(patchedCustomer, HttpStatus.OK);
+        return new ResponseEntity<>(patchedCustomer, HttpStatus.OK);
     }
 
     /**
@@ -128,9 +135,9 @@ public class CustomerController {
         Boolean deleteResult = customerService.deleteCustomer(id);
 
         if (deleteResult == null || !deleteResult) {
-            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
