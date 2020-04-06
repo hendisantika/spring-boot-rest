@@ -32,7 +32,7 @@ public class CustomerController {
      *
      * @return ResponseEntity<List   <   Customer>>
      */
-    @RequestMapping(value = "/customer", method = RequestMethod.GET)
+    @GetMapping(value = "/customer")
     public ResponseEntity<List<Customer>> listAllCustomers() {
         final List<Customer> allCustomers = customerService.findAllCustomers();
         if (allCustomers.isEmpty()) {
@@ -48,7 +48,7 @@ public class CustomerController {
      * @param id customer ID
      * @return ResponseEntity<Customer>
      */
-    @RequestMapping(value = "/customer/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/customer/{id}")
     public ResponseEntity<Customer> getCustomer(@PathVariable("id") final Long id) {
         final Customer fetchedCustomer = customerService.findById(id);
         if (fetchedCustomer == null) {
@@ -65,7 +65,7 @@ public class CustomerController {
      * @param ucBuilder UriComponentBuilder
      * @return ResponseEntity<Void>
      */
-    @RequestMapping(value = "/customer", method = RequestMethod.POST)
+    @PostMapping(value = "/customer")
     public ResponseEntity<Void> createCustomer(@RequestBody final Customer customer,
                                                final UriComponentsBuilder ucBuilder) {
 
@@ -86,7 +86,7 @@ public class CustomerController {
      * @param customer source Customer object to be updated
      * @return ResponseEntity<Customer>
      */
-    @RequestMapping(value = "/customer/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/customer/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable("id") final Long id,
                                                    @RequestBody final Customer customer) {
         final Customer updatedCustomer = customerService.updateCustomer(id, customer);
@@ -105,7 +105,7 @@ public class CustomerController {
      * @param customer Customer object to be patched
      * @return ResponseEntity<Customer>
      */
-    @RequestMapping(value = "/customer/{id}", method = RequestMethod.PATCH)
+    @PatchMapping(value = "/customer/{id}")
     public ResponseEntity<Customer> patchCustomer(@PathVariable("id") final Long id,
                                                   @RequestBody final Customer customer) {
         final Customer patchedCustomer = customerService.patchCustomer(id, customer);
@@ -123,7 +123,7 @@ public class CustomerController {
      * @param id customer ID to be deleted
      * @return ResponseEntity<Void>
      */
-    @RequestMapping(value = "/customer/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/customer/{id}")
     public ResponseEntity<Void> deleteCustomer(@PathVariable("id") final Long id) {
         Boolean deleteResult = customerService.deleteCustomer(id);
 

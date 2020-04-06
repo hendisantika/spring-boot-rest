@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer findById(final Long customerId) {
-        return customerRepository.findOne(customerId);
+        return customerRepository.findById(customerId).get();
     }
 
     @Override
@@ -42,7 +42,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Boolean isCustomerExist(final Customer customer) {
         if (customer.getId() != null) {
-            final Customer existingCustomer = customerRepository.findOne(customer.getId());
+            final Customer existingCustomer = customerRepository.findById(customer.getId()).get();
             return existingCustomer != null;
         } else {
             return false;
@@ -52,7 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer updateCustomer(final Long id, final Customer customer) {
 
-        final Customer fetchedCustomer = customerRepository.findOne(id);
+        final Customer fetchedCustomer = customerRepository.findById(id).get();
         if (fetchedCustomer == null) {
             return null;
         }
@@ -67,7 +67,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer patchCustomer(Long id, Customer customer) {
 
-        final Customer fetchedCustomer = customerRepository.findOne(id);
+        final Customer fetchedCustomer = customerRepository.findById(id).get();
         if (fetchedCustomer == null) {
             return null;
         }
@@ -87,7 +87,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Boolean deleteCustomer(final Long id) {
-        final Customer fetchedCustomer = customerRepository.findOne(id);
+        final Customer fetchedCustomer = customerRepository.findById(id).get();
         if (fetchedCustomer == null) {
             return false;
         } else {
