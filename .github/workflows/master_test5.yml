@@ -19,7 +19,7 @@ jobs:
       - name: Set up Java version
         uses: actions/setup-java@v4
         with:
-          java-version: 'java21'
+          java-version: '21'
           distribution: 'microsoft'
 
       - name: Build with Maven
@@ -29,7 +29,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: '${{ github.workspace }}/target/*0.0.1.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -60,4 +60,3 @@ jobs:
           app-name: 'test5'
           slot-name: 'Production'
           package: '*.jar'
-          
