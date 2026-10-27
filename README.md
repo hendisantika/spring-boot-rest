@@ -3,7 +3,7 @@
 [![Java CI with Maven](https://github.com/hendisantika/spring-boot-rest/actions/workflows/maven.yml/badge.svg)](https://github.com/hendisantika/spring-boot-rest/actions/workflows/maven.yml)
 [![Build and deploy JAR app to Azure Web App](https://github.com/hendisantika/spring-boot-rest/actions/workflows/master_test5.yml/badge.svg)](https://github.com/hendisantika/spring-boot-rest/actions/workflows/master_test5.yml)
 ![Java](https://img.shields.io/badge/Java-25-orange?logo=openjdk)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.1.0-brightgreen?logo=springboot)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.1.2-brightgreen?logo=springboot)
 
 A sample web service application built with Spring Boot. It exposes a `Customer` entity with full CRUD operations
 over REST, backed by an in-memory H2 database via Spring Data JPA.
@@ -11,7 +11,7 @@ over REST, backed by an in-memory H2 database via Spring Data JPA.
 ## Tech Stack
 
 - Java 25
-- Spring Boot 4.1.0 (Web, Data JPA)
+- Spring Boot 4.1.2 (Web, Data JPA)
 - H2 in-memory database
 - Maven (wrapper included)
 
