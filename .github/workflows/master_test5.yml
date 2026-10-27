@@ -33,6 +33,9 @@ jobs:
           path: '${{ github.workspace }}/target/*0.0.1.jar'
 
   deploy:
+    # Opt-in: set repository variable AZURE_DEPLOY_ENABLED=true once the Azure
+    # service principal has access to a subscription; otherwise the job is skipped.
+    if: ${{ vars.AZURE_DEPLOY_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     needs: build
     environment:
